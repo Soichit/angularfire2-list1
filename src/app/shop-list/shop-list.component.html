@@ -9,3 +9,37 @@
 <button (click)="add(newitem.value)">Add</button>
 <button (click)="deleteEverything()">Delete All</button>
 
+<hr />
+
+
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <button type="submit" class="btn btn-success">Save</button>
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      id="name"
+      class="form-control"
+      formControlName="name">
+  </div>
+
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input
+      type="text"
+      id="price"
+      class="form-control"
+      formControlName="price">
+  </div>
+
+  <div class="form-group">
+    <label for="description">description</label>
+    <input
+      type="text"
+      id="description"
+      class="form-control"
+      formControlName="description">
+  </div>
+</form>
