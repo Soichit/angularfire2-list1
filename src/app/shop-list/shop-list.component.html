@@ -9,10 +9,26 @@
 <button (click)="add(newitem.value)">Add</button>
 <button (click)="deleteEverything()">Delete All</button>
 
+<br />
+<br />
+
+<h3>Filter test</h3>
+<p>Filter: <input type="text" #filter (keyup)="0"/></p>
+<p>Selected: {{selectedValue}}</p>
+
+<div *ngIf="filter.value != ''">
+  <div *ngFor="let item of items | async">
+    <p>{{item.text | filter:filter.value}}</p>
+  </div>
+</div>
+
+
 <hr />
+<br />
+<br />
+<br />
 
-
-
+<h1>Forms test</h1>
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
   <button type="submit" class="btn btn-success">Save</button>
 
@@ -43,3 +59,12 @@
       formControlName="description">
   </div>
 </form>
+
+<h3>Branch3 filter w/ angularfire test</h3>
+<ul>
+  <li *ngFor="let item of branch3 | async">
+    <p>name: {{item.name}}</p>
+    <p>price: {{item.price}}</p>
+    <p>description: {{item.description}}</p>
+  </li>
+</ul>
