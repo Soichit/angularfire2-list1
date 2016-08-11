@@ -20,7 +20,7 @@ export class ShopListComponent implements OnInit {
   branch2: FirebaseListObservable<any>;
   branch3: FirebaseListObservable<any>;
   myForm: FormGroup;
-  selectedValue: string = "xxx";
+  selectedValue: string;
 
   constructor(public af: AngularFire,
               private formBuilder: FormBuilder) {
@@ -70,5 +70,13 @@ export class ShopListComponent implements OnInit {
                        price: newForm.price,
                        description: newForm.description
                       });
+  }
+
+  onSelect(item: string) {
+    this.selectedValue = item;
+  }
+
+  okayButton() {
+    console.log(this.selectedValue);
   }
 }

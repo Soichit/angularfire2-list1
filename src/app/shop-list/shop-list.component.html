@@ -13,12 +13,15 @@
 <br />
 
 <h3>Filter test</h3>
-<p>Filter: <input type="text" #filter (keyup)="0"/></p>
-<p>Selected: {{selectedValue}}</p>
+<p>Selected Item: {{selectedValue}}<button *ngIf="selectedValue != 'undefined'" (click)="okayButton()">okay</button></p>
+Filter: <input #filter type="text" [ngModel]="selectedValue" (keyup)="0"/>
+
 
 <div *ngIf="filter.value != ''">
-  <div *ngFor="let item of items | async">
-    <p>{{item.text | filter:filter.value}}</p>
+  <div #block *ngFor="let item of items | async"
+       (mouseover)="block.style.backgroundColor='red'"
+       (mouseleave)="block.style.backgroundColor=''">
+    <p (click)="onSelect(item.text)">{{item.text | filter:filter.value}}</p>
   </div>
 </div>
 
